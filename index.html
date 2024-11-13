@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden; /* Prevent scrollbars */
+            background: linear-gradient(to bottom, #87CEEB 0%, #B0E0E6 100%); /* Light blue gradient for sky */
+        }
+
+        .cloud {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.8; /* Slightly transparent */
+        }
+
+        .cloud::before,
+        .cloud::after {
+            content: '';
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+        }
+
+        .cloud::before {
+            width: 100px; /* Width of the cloud */
+            height: 100px; /* Height of the cloud */
+            left: 20px; /* Adjust as needed */
+            top: 10px; /* Adjust as needed */
+        }
+
+        .cloud::after {
+            width: 120px; /* Width of the cloud */
+            height: 120px; /* Height of the cloud */
+            left: 60px; /* Adjust as needed */
+            top: 0px; /* Adjust as needed */
+        }
+
+        /* Example usage */
+        #cloud1 {
+            left: 10%; /* Positioning */
+            top: 20%;
+            width: 100px;
+            height: 60px;
+        }
+
+        #cloud2 {
+            left: 70%;
+            top: 30%;
+            width: 120px;
+            height: 70px;
+        }
+
+        @keyframes moveClouds {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .cloud {
+            animation: moveClouds 30s linear infinite; /* Animation duration and type */
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="cloud" id="cloud1"></div>
+    <div class="cloud" id="cloud2"></div>
+    <!-- <div class="cloud" id="cloud3"></div>
+    <div class="cloud" id="cloud4"></div> -->
+    <div id="weather-container">
+        <h2>Weather App</h2>
+        <input type="text" id="city" placeholder="Enter city">
+        <button onclick="getWeather()">Search</button>
+
+        <img id="weather-icon" alt="Weather Icon">
+
+        <div id="temp-div"></div>
+
+        <div id="weather-info"></div>
+
+        <div id="hourly-forecast"></div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
